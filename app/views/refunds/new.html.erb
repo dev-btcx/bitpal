@@ -1,0 +1,55 @@
+<div class="merchant-page">
+	
+	<div class="row-fluid">
+	  <div class="span6"><%= image_tag("logo_small.png", :class => "logo") %></div>
+	  <div class="span6">		 
+	  	<div style="text-align:right;">
+			<% if (@order != nil) %>				
+				Order description: <%= @order.description %><br/>
+				Order amount: <%= @order.amount %> BTC<br/>	
+				Amount to refund: <%= @order.refund_amount %> BTC<br/>					
+	            <% back_image = image_tag("back.png") %>
+	            <%= link_to back_image, "/orders/"+@order.id.to_s %>					
+			<% end %>		  			
+	    </div>
+	  </div>
+	</div>	
+	<%= image_tag("separator.png", :class => "separator") %>	
+					
+	<% if (@order != nil) %>
+		Your payment has been expired and cancelled, so you can refund your money. Bitpal doesn't take
+		any fee from refund, except of 0.0005BTC which is given to Bitcoin network to process your transaction.
+			
+		<div class="refund-form">
+		<%= form_for(:refund, :url => refunds_path, :html => { :class => "form-inline"}) do |f| %>				
+			<%= f.hidden_field :order_id,  :value => @order.id %>			    
+			<label for="bitcoin_address">Bitcoin address:</label>
+			<%= f.text_field :bitcoin_address, :class => "input-xlarge"%>
+			<label for="refund_amount">Amount:</label>
+			<input type="text" id="refund_amount" class="input-small" value="<%= @order.refund_amount %>" name="refund[amount]"/>			
+			<%= f.submit "Perform", :class => "btn btn-large btn-primary perform-button" %>						  				
+		<% end %>
+		</div>
+
+		<table class="table">
+			<tr>
+				<td>Date</td>
+				<td>Amount</td>
+			</tr>
+			<% if !@refunds.empty? %>
+				<%  @refunds.each do |refund| %>
+				<tr>		  		
+					<td><%= refund.created_at.strftime("%d.%m.%Y %H:%M") %></td>
+					<td><%= refund.amount %>BTC (+0.0005BTC fee)</td>
+				</tr>  
+				<% end %>
+			<% else %>
+				<tr>		  		
+					<td colspan="2">No refunds for current order</td>
+				</tr>  		    
+			<% end %>      
+		</table>		
+	<% else %>
+	    Order with such id doesn't exist!
+	<% end %>	
+</div>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>	
+    <meta name="robots" content="noindex">
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>BitPal</title>
+	<meta name="BitPal.se" content="">
+	<meta name="BitPal - Bitcoin Payment Processing" content="">
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link href="/assets/webapi.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div class="webapi-iframe">
+		<table width="100%">
+			<tr>
+				<td>
+					<%= image_tag("logo_small2.png", :class => "logo") %>	
+				</td>
+				<td>
+					<div class="counter-section">							
+						<% if (@payment != nil && @error_message == "") %>
+							This payment is expired after:<br/>
+							<div class="counter">5m:00s</div>										            				
+						<% end %>	
+					</div>
+					
+				</td>
+			</tr>
+		</table>		
+		
+		<% if (@payment != nil && @error_message == "") %>
+			To be able to process this order you should send <%= @payment.amount %> bitcoins to:<br/>
+			<div class="code"><%= @payment.bitcoin_address %></div>
+			If you have wallet installed on your device, then you can <a href="bitcoin:<%= @payment.bitcoin_address %>?<%= @payment.amount %>" target=_blank>click to pay</a>		
+		<% else %>	
+			<div class="error"><%= @error_message %></div>		
+		<% end %>		
+	</div>
+
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  
+</body>
+</html>

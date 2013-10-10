@@ -1,0 +1,57 @@
+<div class="merchant-page">
+	
+	<div class="row-fluid">
+	  <div class="span6"><%= image_tag("logo_small.png", :class => "logo") %></div>
+	  <div class="span6">		 
+	  	<div style="text-align:right;">		
+	            <%= render 'shared/merchant_info', :merchant => @merchant %>
+	
+	            <% back_image = image_tag("back.png") %>
+	            <%= link_to back_image, merchant_path(@merchant) %>
+	    </div>
+	  </div>
+	</div>
+	
+	<%= image_tag("separator.png", :class => "separator") %>			
+	The minimal amount to withdraw is 0.01BTC. Bitpal takes fee from each withdraw which equals to 1% + 0.0005BTC.
+
+	<div class="withdraw-form">
+	<%= form_for(:withdraw, :url => withdraws_path, :html => { :class => "form-inline"}) do |f| %>				
+	    <%= f.hidden_field :merchant_id,  :value => @merchant.id %>
+	    <input type="hidden" id="withdraw_limit" value="<%= @merchant.balance %>" />		
+		<label for="withdraw_amount">Amount:</label>
+		<%= f.text_field :amount, :class => "input-small" %>
+		<label for="withdraw_fee">Fee:</label>
+		<input type="text" id="withdraw_fee" class="input-small" disabled="disabled"/>
+		<label for="withdraw_fee">Output:</label>
+		<input type="text" id="withdraw_output" class="input-small"/>					
+		<%= f.submit "Perform", :class => "btn btn-large btn-primary perform-button" %>						  				
+	<% end %>
+	</div>
+		
+	<table class="table">
+		<tr>
+			<td>Date</td>
+			<td>Amount</td>
+			<td>Fee</td>
+			<td>Commission</td>
+		</tr>
+		<% if !@withdraws.empty? %>
+		    <%  @withdraws.each do |withdraw| %>
+    		<tr>		  		
+		  		<td><%= withdraw.created_at.strftime("%d.%m.%Y %H:%M") %></td>
+		  		<td><%= withdraw.amount %>BTC</td>
+				<td><%= withdraw.fee %>BTC</td>
+				<td><%= withdraw.commission %>BTC</td>
+			</tr>  
+		    <% end %>
+		<% else %>
+			<tr>		  		
+		  		<td colspan="4">No withdraws</td>
+			</tr>  		    
+		<% end %>      
+	</table>
+</div>
+
+
+

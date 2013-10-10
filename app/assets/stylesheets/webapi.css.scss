@@ -1,0 +1,81 @@
+// Place all the styles related to the webapi controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.webapi-page {
+  width: 800px;
+  padding-top: 100px;
+  margin:0px auto;  
+  font-family:Geneva, Times New Roman;
+  font-size:20px;
+  color:#777777;
+  line-height:145%;
+    
+  .code {    
+    margin: 10px;
+    padding: 10px;   
+    color: #faeedd;
+    background-color: #708090; 
+    font-size:25px; 
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    
+    a {
+      color: white;
+    }
+  }
+  .error {
+    background-color: #FFCCCC;
+    border: solid 2px; 
+    border-color: #FF6666;
+    margin: 10px;
+    padding: 10px;
+    font-size:25px;  
+    color: #FF3333;    
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+  }   
+}
+
+.webapi-iframe {
+  width: 100%;
+  padding-top: 0px;
+  margin:0px auto;  
+  font-family:Geneva, Times New Roman;
+  font-size:15px;
+  color:#777777;
+  line-height:100%;
+    
+  .code {    
+    margin: 5px;
+    padding: 5px;   
+    color: #faeedd;
+    background-color: #708090; 
+    font-size:20px; 
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .counter-section {
+    text-align:right;
+    margin-right: 5px;    
+    
+    .counter {
+      padding-top:5px;
+      font-size:20px;
+    }
+  }
+  
+  .error {
+    background-color: #FFCCCC;
+    border: solid 2px; 
+    border-color: #FF6666;
+    margin-top: 10px;
+    padding: 3px;
+    width: 90%;    
+    color: #FF3333;    
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }  
+}

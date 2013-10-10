@@ -1,0 +1,16 @@
+<%= form_for(:session, :url => sessions_path) do |f| %>
+    <dl>
+        <dt><label for="session_email"><%= t :email %>:</label></dt>
+        <dd>
+            <%= f.text_field :email %>
+        </dd>
+        <dt><label for="session_password"><%= t :password %>:</label></dt>
+        <dd>
+            <%= f.password_field :password %>
+        </dd>
+        <dt></dt>
+        <dd>
+            <%= f.submit  :sign_in %>
+        </dd>
+    </dl>
+<% end %>

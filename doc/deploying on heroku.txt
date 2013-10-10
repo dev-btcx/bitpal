@@ -1,0 +1,29 @@
+1) https://devcenter.heroku.com/articles/quickstart - install heroku on your local computer 
+2) go to the folder, where rails application is stored on your local computer and type: heroku login
+Then it promts your credentials:
+
+Enter your Heroku credentials.
+Email: adam@example.com
+Password: your_password
+
+2) to create new application on Heroku cloud hostins, type in console: heroku create
+
+Creating severe-mountain-793... done, stack is cedar
+http://severe-mountain-793.herokuapp.com/ | git@heroku.com:severe-mountain-793.git
+Git remote heroku added
+
+3) to push existing code from git to heroku type: git push heroku master
+Counting objects: 67, done.
+Delta compression using up to 4 threads.
+...
+-----> Launching... done, v5
+       http://severe-mountain-793.herokuapp.com deployed to Heroku
+
+To git@heroku.com:severe-mountain-793.git
+ * [new branch]      master -> master
+ 
+4) to run DB migration (creating empty DB), type: heroku run rake db:migrate
+ 
+5) to open application in browser type: heroku open
+ 
+Opening severe-mountain-793... done

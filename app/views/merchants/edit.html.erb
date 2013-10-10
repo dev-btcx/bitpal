@@ -1,0 +1,51 @@
+<div class="merchant-page">
+	
+	<div class="row-fluid">
+	  <div class="span6"><%= image_tag("logo_small.png", :class => "logo") %></div>
+	  <div class="span6">		 
+	  	<div style="text-align:right;">		
+	            <br/>
+	            <br/>
+	            <br/>
+	
+	            <% back_image = image_tag("back.png") %>
+	            <%= link_to back_image, merchant_path(@merchant) %>
+	    </div>
+	  </div>
+	</div>
+	
+	<%= image_tag("separator.png", :class => "separator") %>	
+	
+	<%= form_for(@merchant, :url => merchant_path(@merchant), :html => { :class => "form-horizontal"}) do |f| %>
+		<%= render 'shared/error_messages', :object => f.object %>		
+		<div class="control-group">
+			<label class="control-label" for="merchant_email">Your E-mail:</label>
+			<div class="controls">
+				<%= f.text_field :email, :class => "input-large"  %>
+			</div>
+		</div>	
+		<div class="control-group">
+			<label class="control-label" for="merchant_bitcoin_address">Bitcoin Wallet:</label>
+			<div class="controls">
+				<%= f.text_field :bitcoin_address, :class => "input-xxlarge"  %>
+			</div>
+		</div>	
+		<div class="control-group">
+			<label class="control-label" for="merchant_password">Your Password:</label>
+			<div class="controls">
+				<%= f.password_field :password, :class => "input-large"  %>
+			</div>
+		</div>	
+		<div class="control-group">
+			<label class="control-label" for="merchant_password_confirmation">Pw Confirm:</label>
+			<div class="controls">
+				<%= f.password_field :password_confirmation, :class => "input-large"  %>
+			</div>
+		</div>	
+		<div class="control-group">				
+			<%= f.submit "Save changes", :class => "btn btn-large btn-primary save-profile-button" %>
+		</div>					
+	<% end %> 
+		     	           
+</div>
+

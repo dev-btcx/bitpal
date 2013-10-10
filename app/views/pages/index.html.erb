@@ -1,0 +1,19 @@
+<div class="welcome-page">
+	<div class="row-fluid">
+		<div class="span6">
+			<% logo_image = image_tag("bitpallogo.png", :class => "logo") %>
+			<%= link_to logo_image, "/about"  %>
+		</div>
+		<div class="span6">
+			<% signup_image = image_tag("signuphere.png", :class => "signup") %>
+			<%= link_to signup_image, "/registration"  %>
+			<div class="form-container">
+				<%= form_for(:session, :url => sessions_path, :html => { :class => "form-inline"}) do |f| %>				
+					  <%= f.text_field :email, :value => "Username", :class => "input-medium" %>
+					  <%= f.password_field :password,  :value => "******", :class => "input-medium" %>
+					  <%= f.submit "", :class => "go-button" %>					
+				<% end %>  
+			</div>
+		</div>
+	</div>
+</div>

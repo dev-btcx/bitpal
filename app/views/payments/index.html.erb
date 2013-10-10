@@ -1,0 +1,59 @@
+<div class="merchant-page">
+	
+	<div class="row-fluid">
+	  <div class="span6"><%= image_tag("logo_small.png", :class => "logo") %></div>
+	  <div class="span6">		 
+	  	<div style="text-align:right;">		
+	    </div>
+	  </div>
+	</div>
+	
+	<br/>
+		
+	<table class="table">
+		<tr>
+			<td>Bitcoin address</td>
+			<td>Date</td>
+			<td>Order amount</td>
+			<td>Amount received</td>
+			<td>Status</td>
+			<!--
+			<td></td>
+		-->
+		</tr>
+		<% if !@payments.empty? %>
+		    <%  @payments.each do |payment| %>
+    		<tr>
+		  		<td><%= link_to payment.bitcoin_address, payment_path(payment) %></td>
+		  		<td><%= payment.created_at.strftime("%d.%m.%Y %H:%M") %></td>
+		  		<td><%= payment.amount %>BTC</td>
+		  		<td><%= payment.amount_received != nil ? payment.amount_received : "0" %>BTC</td>
+		  		<td><%= payment.status %></td>		  		
+		  		<!--
+		  		<td>
+		  			<% if (payment.status == :PENDING && payment.amount_received != payment.amount) %>
+		  				<a class="btn btn-medium" href="#" onclick="update_payment(<%= payment.id %>); return false;" title="Complete the payment"><i class="icon-ok-circle"></i></a>
+		  			<% end %>		  			
+		  		</td>
+		  		-->
+			</tr>  
+		    <% end %>
+		<% end %>      
+	</table>
+	<%= paginate @payments, :theme => 'twitter-bootstrap' %>
+</div>
+
+<script language="JavaScript">
+	function update_payment(payment_id){	  
+	  $.ajax({    
+	    url: '/payments/'+payment_id,
+	    type: 'PUT',
+	    success: function (data){
+	    	alert('Load was performed.');
+	    } 	         
+	  });  		
+	}      	
+</script>
+
+
+

@@ -1,0 +1,32 @@
+<div class="merchant-page">
+	
+	<div class="row-fluid">
+	  <div class="span6"><%= image_tag("logo_small.png", :class => "logo") %></div>
+	  <div class="span6">		 
+	  	<div style="text-align:right;">
+			<% if (@order != nil) %>				
+				Order description: <%= @order.description %><br/>										
+				<% if (@order.status == :CANCELED && @order.received_amount > 0) %>				
+					Amount to refund: <%= @order.refund_amount %> BTC<br/>
+					<% refund_image = image_tag("refund.png") %>
+					<%= link_to refund_image, "/orders/"+@order.id.to_s+"/refund" %>
+				<% else %>
+					Amount: <%= @order.amount %> BTC<br/>
+	            	<% check_image = image_tag("refresh.png") %>
+	            	<%= link_to check_image, "/orders/"+@order.id.to_s %>							
+				<% end %>
+								
+			<% end %>		  			
+	    </div>
+	  </div>
+	</div>	
+	<%= image_tag("separator.png", :class => "separator") %>	
+		
+	<% if (@order != nil) %>	
+		Your order status is: 
+		<div class="code"><%= @order.status %></div>			
+		Usually it takes 5 minutes to get confirmations from Bitcoin network for every payment. 	
+	<% else %>
+	    Order with such id doesn't exist!
+	<% end %>
+</div>

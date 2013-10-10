@@ -1,0 +1,43 @@
+<div class="webapi-page">
+			
+	<div class="row-fluid">
+	  <div class="span9"><%= image_tag("logo_small.png", :class => "logo") %></div>
+	  <div class="span3">		 
+	  	<div style="text-align:right;">	
+			<% if (@order != nil && @error_message == "") %>			
+				<script type="application/javascript">
+				var myCountdown = new Countdown({
+													time:600, 
+													width:150, 
+													height:80, 
+													onComplete: countdownComplete,														
+													rangeHi:"minute"	// <- no comma on last item!
+													});
+				function countdownComplete(){
+					window.location.href = "<%= @order.result_url %>";
+				}																													
+				</script>	
+			<% end %>		
+	     </div>
+	  </div>
+	</div>
+	<%= image_tag("separator.png", :class => "separator") %>
+	  
+	<% if (@order != nil && @error_message == "") %>
+		<div class="row-fluid">
+			<div class="span12">
+				This address is valid during the next 10 minutes. Please, send <%= @order.amount %>BTC via any Bitcoin client to:<br/>
+				<div class="code">
+					<a href="bitcoin:<%= @order.bitcoin_address %>?<%= @order.amount %>"><%= @order.bitcoin_address %></a> 
+				</div>				
+				<br/> You can always check the status of your payment by visitng link: <br/>
+				<%= link_to "http://#{request.host}"+order_path(@order), order_path(@order) %><br/>									
+				After you have paid, just click on the "Finish" button to return to the webshop.				
+			</div>	
+		</div>		
+		<% check_image = image_tag("finish.png") %>
+		<%= link_to check_image, @order.result_url %>		
+	<% else %>	
+		<div class="error"><%= @error_message %></div>			
+	<% end %>	  	  			
+</div>

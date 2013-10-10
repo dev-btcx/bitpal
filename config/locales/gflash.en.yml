@@ -1,0 +1,37 @@
+en:
+  gflash:
+    #
+    # These are the translations for the different titles.
+    #
+    titles:
+      notice: "Notice"
+      success: "Success"
+      warning: "Warning"
+      error: "Error"
+      progress: "Progress"
+     
+    sessions:
+      create:         
+        warning: "Invalid email or password"
+          
+    merchants:
+      create:         
+        success: "The merchant account has been created"
+      update:
+        success: "Your profile has been updated"
+    withdraws:
+      create:         
+        success: "The withdraw has been performed"
+    refunds:
+      create:         
+        success: "The refund has been performed"                           
+    #
+    # Add gflash messages for controller actions:
+    # products:
+    #   create:
+    #     notice: "This is a notification"
+    #     error: "Something went wrong"
+    #
+    # Inside controller: 
+    # gflash :notice, :error
+    #

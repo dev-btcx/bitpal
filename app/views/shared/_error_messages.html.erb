@@ -1,0 +1,6 @@
+<% if object.errors.any? %>
+		<% object.errors.each do |key, value| %>    
+			<% message = key.to_s + ' ' + value.to_s %> 
+    		<%= js add_gritter(message, :title => "Warning!", :image => :warning, :sticky => true) %>            
+		<% end %>
+<% end %>

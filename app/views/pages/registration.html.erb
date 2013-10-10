@@ -1,0 +1,33 @@
+<div class="registration-page">
+	<%= image_tag("register_logo.png", :class => "logo") %>
+	<%= form_for(@merchant, :url => merchants_path, :html => { :class => "form-horizontal"}) do |f| %>
+		<%= render 'shared/error_messages', :object => f.object %>
+		<div class="control-group">
+			<label class="control-label" for="merchant_email">Your E-mail:</label>
+			<div class="controls">
+				<%= f.text_field :email, :class => "input-large"  %>
+			</div>
+		</div>	
+		<div class="control-group">
+			<label class="control-label" for="merchant_bitcoin_address">Bitcoin Wallet:</label>
+			<div class="controls">
+				<%= f.text_field :bitcoin_address, :class => "input-large"  %>
+			</div>
+		</div>	
+		<div class="control-group">
+			<label class="control-label" for="merchant_password">Your Password:</label>
+			<div class="controls">
+				<%= f.password_field :password, :class => "input-large"  %>
+			</div>
+		</div>	
+		<div class="control-group">
+			<label class="control-label" for="merchant_password_confirmation">Pw Confirm:</label>
+			<div class="controls">
+				<%= f.password_field :password_confirmation, :class => "input-large"  %>
+			</div>
+		</div>	
+		<div class="control-group">				
+			<%= f.submit "", :class => "registration-button" %>	
+		</div>		
+	<% end %>
+</div>	

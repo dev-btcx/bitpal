@@ -1,0 +1,50 @@
+<div class="example-page">	
+	<div class="row-fluid">
+		<div class="span4">
+			<% logo_image = image_tag("logo_small.png", :class => "logo") %>
+			<%= link_to logo_image, "/"  %>
+		</div>
+		<div class="span8">			
+			<br/></br/><br/>
+			<% if (@merchant != nil) %>
+				<% sign_out_image = image_tag("back.png") %>
+				<%= link_to sign_out_image, merchant_path(@merchant) %>
+			<% end %>
+		</div>
+	</div>
+	<%= image_tag("separator.png", :class => "separator") %>	
+	<h1>About</h1>
+	
+	<p>
+	BitPal is the  Payment Service Provider (PSP) specializing in ecommerce. 
+	Using BitPal anybody can receives payments in bitcoins. Read more about bitcoins <a href="http://bitcoin.org/">here</a>.<br/>
+	</p>
+	
+	<p>
+	Our advantages are: <br/>
+	1) no risk of fraud;<br/>
+	2) no setup fees;<br/>
+	3) no monthly fees;<br/>
+	4) low comission;<br/>
+	5) easy integration;<br/>
+	6) high speed performance.<br/>
+	</p>
+	
+	<h1>Integration</h1>
+	
+	<p>
+	In general you should send http post request to our gate with special parameters. If you are developer, you can check this <a href="/example">Bitpal integration example</a>, written oh PHP.
+	Otherwise, if you are not developer, but familiar with WordPress, just follow next instructions</br>
+	</p>
+	
+	<p>Integrating BitPal into WordPress: <br/>
+	1) download and install WordPress;<br/>
+	2) download and activate Woo Commerce plug-in for WordPress;<br/>
+	3) download and activate Mystile theme for Woo Commerce;<br/>
+	3) download and activate WooCommerce BitPal plugin — payment gateway for Woo Commerce;<br/>
+	4) register at BitPal;<br/>
+	5) set up BitPal gateway for your site.<br/>
+	</p>
+	
+	<br/>         
+</div>

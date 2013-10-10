@@ -1,0 +1,63 @@
+<div class="merchant-page">
+	
+	<div class="row-fluid">
+	  <div class="span6"><%= image_tag("logo_small.png", :class => "logo") %></div>
+	  <div class="span6">		 
+	  	<div style="text-align:right;">		
+				<%= render 'shared/merchant_info', :merchant => @merchant %>	  		
+	            
+	            <% back_image = image_tag("back.png") %>
+	            <%= link_to back_image, merchant_path(@merchant) %>
+	    </div>
+	  </div>
+	</div>
+	
+	<br/>
+		
+	<table class="table">
+		<tr>
+			<td>Bitcoin address</td>
+			<td>Date</td>
+			<td>Amount</td>
+			<td>Received</td>
+			<td>Status</td>
+			<!--
+			<td></td>
+		-->
+		</tr>
+		<% if !@orders.empty? %>
+		    <%  @orders.each do |order| %>
+    		<tr>
+		  		<td><%= order.bitcoin_address %></td>
+		  		<td><%= order.created_at.strftime("%d.%m.%Y %H:%M") %></td>
+		  		<td><%= order.amount %>BTC</td>
+		  		<td><%= order.received_amount != nil ? order.received_amount : "0" %>BTC</td>
+		  		<td><%= order.status %></td>		  		
+		  		<!--
+		  		<td>
+		  			<% if (order.status == :PENDING && order.received_amount != order.amount) %>
+		  				<a class="btn btn-medium" href="#" onclick="update_payment(<%= order.id %>); return false;" title="Complete the order"><i class="icon-ok-circle"></i></a>
+		  			<% end %>		  			
+		  		</td>
+		  		-->
+			</tr>  
+		    <% end %>
+		<% end %>      
+	</table>
+	<%= paginate @orders, :theme => 'twitter-bootstrap' %>
+</div>
+
+<script language="JavaScript">
+	function update_payment(payment_id){	  
+	  $.ajax({    
+	    url: '/orders/'+payment_id,
+	    type: 'PUT',
+	    success: function (data){
+	    	alert('Load was performed.');
+	    } 	         
+	  });  		
+	}      	
+</script>
+
+
+

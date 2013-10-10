@@ -1,0 +1,86 @@
+<div class="merchant-page">
+		
+	<div class="row-fluid">
+	  <div class="span6"><%= image_tag("logo_small.png", :class => "logo") %></div>
+	  <div class="span6">		 
+	  	<div style="text-align:right;">		
+	  			<%= render 'shared/merchant_info', :merchant => @merchant %>
+	            
+	            <% sign_out_image = image_tag("sign_out.png") %>
+	            <%= link_to sign_out_image, signout_path, :method => :delete %>
+	    </div>
+	  </div>
+	</div>
+	
+	<%= image_tag("separator.png", :class => "separator") %>
+	
+	<div class="row-fluid">
+	  <div class="span3"><%= image_tag("merchant_logo.png", :class => "logo") %></div>
+	  <div class="span9">			
+	      <% edit_image = image_tag("edit_details.png") %>
+	      <% example_image = image_tag("code_example.png") %>
+	      <% photo_image = image_tag("upload_logo.png") %>
+	      <% withdraws_image = image_tag("withdraws.png") %>
+	
+	      <%= link_to edit_image,  edit_merchant_path(@merchant) %><br/>
+	      <%= link_to example_image, '/example' %><br/>
+	      <!--<%= link_to photo_image, '/example' %><br/>-->
+	      <%= link_to withdraws_image, '/merchants/'+@merchant.id.to_s+'/withdraws' %></br>
+	  </div>
+	</div>
+
+	<br/>
+	
+	<%= image_tag("separator.png", :class => "separator") %>
+	
+	<div class="row-fluid">
+	  <div class="span3">Bitcoin address:</div>
+	  <div class="span9"><%= @merchant.bitcoin_address %></div>
+	</div>
+	<div class="row-fluid">
+	  <div class="span3">API Key:</div>
+	  <div class="span9"><div style="overflow: auto;"><small><%= @merchant.api_key %></small></div></div>
+	</div>
+
+	<br/>
+	
+	<div class="row-fluid">
+	  <div class="span9"><b>Last 5 orders</b></div>
+	  <div class="span3">
+	  	<div style="text-align:right;">	
+	        <% transactions_image = image_tag("transaction_list.png") %>
+	    	<%= link_to transactions_image, '/merchants/'+@merchant.id.to_s+'/orders' %>    
+	    </div>			
+	  </div>
+	</div>
+		
+	<br/>
+	
+	<table class="table">
+		<tr>
+			<td>Bitcoin address</td>
+			<td>Date</td>
+			<td>Amount</td>
+			<td>Status</td>
+		</tr>		
+		<% if !@merchant.orders.empty? %>	
+		    <% for i in 0..4 %>
+		    <% order = @merchant.orders[i] %>
+			    <% if (order != nil) %>    
+	    		<tr>
+			  		<td><%= order.bitcoin_address %></td>
+			  		<td><%= order.created_at.strftime("%d.%m.%Y %H:%M") %></td>
+			  		<td><%= order.amount %> BTC</td>
+			  		<td><%= order.status %></td>
+	  			</tr>
+	  			<% end %>  
+		    <% end %>
+		<% else %>
+			<tr>		  		
+		  		<td colspan="4">No orders</td>
+			</tr>			
+		<% end %>      
+	
+	</table>
+</div>
+</br>

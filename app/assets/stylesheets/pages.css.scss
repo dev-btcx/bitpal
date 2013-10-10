@@ -1,0 +1,72 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.welcome-page {
+	width: 800px;
+	margin:0px auto;
+	padding-top: 200px;
+	.logo{
+		margin-top: 15px;
+	}
+	.go-button{
+		cursor: pointer;
+		background: url(go.png);
+		cursor: pointer;
+		width: 40px!important;
+		height: 40px;
+		border: 0px;
+	}
+	.signup{
+		margin-top: 5px;
+		cursor: pointer;
+	}
+	.form-container {
+		margin-top: 10px;
+	}
+}
+
+.registration-page {
+	width: 500px;
+	margin:0px auto;
+	padding-top: 150px;
+	font-family: Geneva, Times New Roman;
+		
+	label {	
+		font-size: 25px;
+	}
+	input[type="text"], input[type="password"] {
+		font-size: 20px;
+		padding: 10px;
+		margin-top: -5px;
+		margin-left: -10px;
+	}	
+	.logo {
+		margin-bottom: 10px;
+	}
+	.registration-button {
+		background: url(registration_button.png);
+		cursor: pointer;
+		width: 425px!important;
+		height: 85px;
+		border: 0px;
+	}
+}
+
+.example-page {
+  width: 800px;
+  margin:0px auto;
+  padding-top: 100px;
+  font-family: Geneva, Times New Roman;  
+  font-size:20px;    
+  
+  .code {    
+    margin: 10px;
+    padding: 10px;   
+    color: #faeedd;
+    background-color: #708090; 
+    font-size:15px; 
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+  }
+}

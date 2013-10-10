@@ -1,0 +1,75 @@
+// Place all the styles related to the merchants controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.merchant-page {
+  width: 800px;
+  padding-top: 100px;
+  margin:0px auto;  
+  font-family:Geneva, Times New Roman;
+  font-size:20px;
+  color:#777777;
+  line-height:145%;
+
+  label { 
+    font-size: 25px;
+  }
+  
+  input[type="text"], input[type="password"] {
+    font-size: 20px;
+    padding: 10px;
+    margin-top: -5px;
+    margin-left: -10px;
+  } 
+
+  .save-profile-button {
+    margin-left: 170px;
+  }    
+  
+  .code {    
+    margin: 10px;
+    padding: 10px;   
+    color: #faeedd;
+    background-color: #708090; 
+    font-size:25px; 
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+  }  
+
+  .withdraw-form {
+  	padding: 5px;       	
+  	
+  	input { 
+  		text-align:right;
+  		margin-right: 10px;	
+  	}
+  	
+  	label {
+  		padding-right: 15px;
+  	}
+  	
+  	.perform-button {
+  		margin-bottom: 5px;
+  		margin-left: 10px;
+  	}  	
+  }
+  
+  .refund-form {
+    margin-top: 20px;
+    padding: 0px;         
+    
+    input { 
+      text-align:right;
+      margin-right: 5px; 
+    }
+    
+    label {
+      padding-right: 10px;
+    }
+    
+    .perform-button {
+      margin-bottom: 5px;
+      margin-left: 5px;
+    }   
+  }  
+}
